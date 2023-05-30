@@ -1,0 +1,10 @@
+{
+	"name": "lsAzureKeyVaultLKV",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kv-testdf2notrole.vault.azure.net/"
+		}
+	}
+}
