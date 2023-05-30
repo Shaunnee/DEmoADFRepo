@@ -1,0 +1,9 @@
+{
+	"name": "DFdemozxt",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "22f289c5-51c3-4d16-a354-1cef84674355",
+		"tenantId": "655cacd6-bb93-437c-b404-776758f22d25"
+	}
+}
