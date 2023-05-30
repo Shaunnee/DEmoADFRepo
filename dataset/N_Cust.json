@@ -1,5 +1,5 @@
 {
-	"name": "Employee",
+	"name": "N_Cust",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "employees.json",
+				"fileName": "Naga customer.csv",
 				"folderPath": "Input",
 				"container": "adfdemo"
 			},
