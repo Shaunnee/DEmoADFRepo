@@ -6,7 +6,11 @@
 				"name": "Fail1",
 				"type": "Fail",
 				"dependsOn": [],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"message": "hekl",
+					"errorCode": "1"
+				}
 			}
 		],
 		"annotations": []
