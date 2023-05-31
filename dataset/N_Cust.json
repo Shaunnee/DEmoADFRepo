@@ -11,6 +11,9 @@
 			},
 			"fName": {
 				"type": "string"
+			},
+			"FName": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
