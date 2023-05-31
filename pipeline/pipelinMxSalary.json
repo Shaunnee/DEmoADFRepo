@@ -28,6 +28,26 @@
 						"firstRowOnly": true
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Data flowmx",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "MxSalary",
+					"value": {
+						"value": "\nactivity('Data flowmx').output.runStatus.output.MaxVal.value[0].Maxsalary\n",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
