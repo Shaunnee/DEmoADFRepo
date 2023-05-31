@@ -23,24 +23,10 @@
 						"coreCount": 8,
 						"computeType": "General"
 					},
-					"traceLevel": "Fine"
-				}
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Data flowmx",
-						"dependencyConditions": [
-							"Succeeded"
-						]
+					"traceLevel": "None",
+					"cacheSinks": {
+						"firstRowOnly": true
 					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "MxSalary",
-					"value": ""
 				}
 			}
 		],
