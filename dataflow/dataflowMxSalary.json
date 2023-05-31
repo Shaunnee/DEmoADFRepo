@@ -40,7 +40,10 @@
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: true,",
-				"     saveOrder: 1) ~> MaxVal"
+				"     saveOrder: 1,",
+				"     mapColumn(",
+				"          Maxsalary",
+				"     )) ~> MaxVal"
 			]
 		}
 	}
