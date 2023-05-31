@@ -1,0 +1,34 @@
+{
+	"name": "dataflowRank",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "CustPay",
+						"type": "DatasetReference"
+					},
+					"name": "sourcerank"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "rank1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          name as string,",
+				"          total as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourcerank",
+				"sourcerank rank(asc(ERROR_FUNCTION(''), true),",
+				"     output(rnk as long)) ~> rank1"
+			]
+		}
+	}
+}
