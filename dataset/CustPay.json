@@ -29,11 +29,23 @@
 		},
 		"schema": [
 			{
-				"name": "name",
+				"name": "Customer name",
 				"type": "String"
 			},
 			{
-				"name": "total",
+				"name": "Title",
+				"type": "String"
+			},
+			{
+				"name": "depid",
+				"type": "String"
+			},
+			{
+				"name": "salary",
+				"type": "String"
+			},
+			{
+				"name": "department",
 				"type": "String"
 			}
 		]
