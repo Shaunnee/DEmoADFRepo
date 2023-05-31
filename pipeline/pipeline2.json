@@ -147,8 +147,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "incustomerlkv",
-						"type": "DatasetReference"
+						"referenceName": "N_Cust",
+						"type": "DatasetReference",
+						"parameters": {
+							"root": {
+								"value": "@pipeline().parameters.Root",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -159,6 +165,16 @@
 				]
 			}
 		],
+		"parameters": {
+			"Root": {
+				"type": "string",
+				"defaultValue": "adfdemo / Input"
+			},
+			"fName": {
+				"type": "string",
+				"defaultValue": "Naga customer.csv"
+			}
+		},
 		"annotations": []
 	}
 }

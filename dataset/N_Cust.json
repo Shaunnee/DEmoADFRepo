@@ -5,14 +5,27 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"root": {
+				"type": "string"
+			},
+			"fName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Naga customer.csv",
-				"folderPath": "Input",
-				"container": "adfdemo"
+				"fileName": {
+					"value": "@dataset().fName",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().root",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
