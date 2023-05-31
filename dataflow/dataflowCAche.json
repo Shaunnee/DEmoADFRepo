@@ -74,7 +74,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source2",
 				"source(output(",
-				"          Id as string,",
+				"          Id as integer,",
 				"          name as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
