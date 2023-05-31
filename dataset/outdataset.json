@@ -5,11 +5,6 @@
 			"referenceName": "AzureBlobStorage2",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"Fnmae": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

@@ -153,6 +153,10 @@
 							"root": {
 								"value": "@pipeline().parameters.Root",
 								"type": "Expression"
+							},
+							"fName": {
+								"value": "@pipeline().parameters.fName",
+								"type": "Expression"
 							}
 						}
 					}
