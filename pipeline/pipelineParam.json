@@ -53,7 +53,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"root": {
-								"value": "@pipeline().parameters.Root",
+								"value": "@pipeline().globalParameters.gRootInput",
 								"type": "Expression"
 							},
 							"fName": {
@@ -72,10 +72,6 @@
 			}
 		],
 		"parameters": {
-			"Root": {
-				"type": "string",
-				"defaultValue": "adfdemo / Input"
-			},
 			"FName": {
 				"type": "string",
 				"defaultValue": "Naga customer.csv"
