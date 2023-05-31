@@ -16,12 +16,15 @@
 			"transformations": [
 				{
 					"name": "parse1"
+				},
+				{
+					"name": "parse2"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
 				"          ID as string,",
-				"          name as string,",
+				"          Name as string,",
 				"          Skill as string,",
 				"          Addr as string",
 				"     ),",
@@ -34,7 +37,11 @@
 				"     format: 'delimited',",
 				"     columnNamesAsHeader: false,",
 				"     columnDelimiter: '|',",
-				"     nullValue: '') ~> parse1"
+				"     nullValue: '') ~> parse1",
+				"parse1 parse(newAddr = Addr ? (street as string,",
+				"          City as string),",
+				"     format: 'json',",
+				"     documentForm: 'singleDocument') ~> parse2"
 			]
 		}
 	}
