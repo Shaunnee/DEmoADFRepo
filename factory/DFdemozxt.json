@@ -1,5 +1,13 @@
 {
 	"name": "DFdemozxt",
+	"properties": {
+		"globalParameters": {
+			"gRootInput": {
+				"type": "string",
+				"value": "adfdemo/output"
+			}
+		}
+	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
