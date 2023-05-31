@@ -17,6 +17,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "source2"
+				},
+				{
+					"dataset": {
+						"referenceName": "Depx",
+						"type": "DatasetReference"
+					},
+					"name": "source3"
 				}
 			],
 			"sinks": [
@@ -29,6 +36,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
+				},
+				{
+					"name": "depCaxche"
 				}
 			],
 			"transformations": [
@@ -63,10 +73,19 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source2",
+				"source(output(",
+				"          Id as string,",
+				"          name as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source3",
 				"source2 keyGenerate(output(newKey as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"surrogateKey1 derive(newKey1 = newKey + cachedmaXiD#outputs()[1].ID) ~> derivedColumn1",
+				"surrogateKey1 derive(newKey1 = newKey + cachedmaXiD#outputs()[1].ID,",
+				"          depid = depCaxche#lookup(depid).deptName\r",
+				") ~> derivedColumn1",
 				"source1 sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
@@ -88,7 +107,19 @@
 				"          depid,",
 				"          salary,",
 				"          department",
-				"     )) ~> sink1"
+				"     )) ~> sink1",
+				"source3 sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     keys:['Id'],",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1,",
+				"     mapColumn(",
+				"          Id,",
+				"          deptName = name",
+				"     )) ~> depCaxche"
 			]
 		}
 	}
