@@ -1,0 +1,47 @@
+{
+	"name": "dataflowMxSalary",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "custPayx",
+						"type": "DatasetReference"
+					},
+					"name": "cust"
+				}
+			],
+			"sinks": [
+				{
+					"name": "MaxVal"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {Customer name} as string,",
+				"          Title as string,",
+				"          depid as integer,",
+				"          salary as integer,",
+				"          department as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> cust",
+				"cust aggregate(Maxsalary = max(salary)) ~> aggregate1",
+				"aggregate1 sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: true,",
+				"     saveOrder: 1) ~> MaxVal"
+			]
+		}
+	}
+}
