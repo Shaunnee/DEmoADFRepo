@@ -1,0 +1,47 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "employeesflt.json",
+				"folderPath": "Input",
+				"container": "adfdemo"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"ID": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"skill": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"aDDR": {
+					"type": "object",
+					"properties": {
+						"street": {
+							"type": "string"
+						},
+						"City": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	}
+}
