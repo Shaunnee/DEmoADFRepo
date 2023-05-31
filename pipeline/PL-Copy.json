@@ -40,6 +40,20 @@
 						}
 					},
 					"enableStaging": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Info",
+							"enableReliableLogging": true
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage1",
+								"type": "LinkedServiceReference"
+							},
+							"path": "adfdemo"
+						}
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"typeConversion": true,
