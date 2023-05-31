@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "employees.json",
+				"fileName": "employeesflt.json",
 				"folderPath": "Input",
 				"container": "adfdemo"
 			}
