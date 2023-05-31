@@ -4,7 +4,7 @@
 		"globalParameters": {
 			"gRootInput": {
 				"type": "string",
-				"value": "adfdemo/input"
+				"value": "adfdemo/Input"
 			}
 		}
 	},
