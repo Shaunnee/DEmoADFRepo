@@ -18,58 +18,26 @@
 		"schema": {
 			"type": "object",
 			"properties": {
-				"Employees": {
+				"ID": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"skill": {
 					"type": "array",
 					"items": {
-						"type": "object",
-						"properties": {
-							"userId": {
-								"type": "string"
-							},
-							"jobTitleName": {
-								"type": "string"
-							},
-							"Skills": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"firstName": {
-								"type": "string"
-							},
-							"lastName": {
-								"type": "string"
-							},
-							"preferredFullName": {
-								"type": "string"
-							},
-							"employeeCode": {
-								"type": "string"
-							},
-							"region": {
-								"type": "string"
-							},
-							"phoneNumber": {
-								"type": "string"
-							},
-							"emailAddress": {
-								"type": "string"
-							},
-							"Address": {
-								"type": "object",
-								"properties": {
-									"street": {
-										"type": "string"
-									},
-									"City": {
-										"type": "string"
-									},
-									"postcode": {
-										"type": "string"
-									}
-								}
-							}
+						"type": "string"
+					}
+				},
+				"aDDR": {
+					"type": "object",
+					"properties": {
+						"street": {
+							"type": "string"
+						},
+						"City": {
+							"type": "string"
 						}
 					}
 				}
