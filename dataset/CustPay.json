@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "CustPay",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
@@ -18,7 +18,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "output",
+				"fileName": "custPay.csv",
+				"folderPath": "Input",
 				"container": "adfdemo"
 			},
 			"columnDelimiter": ",",
