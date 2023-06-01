@@ -1,0 +1,39 @@
+{
+	"name": "flowletrdupsagg",
+	"properties": {
+		"type": "Flowlet",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "input1"
+				},
+				{
+					"name": "output1"
+				}
+			],
+			"scriptLines": [
+				"input(output(",
+				"          ID as string,",
+				"          {Customer name} as string,",
+				"          Title as string,",
+				"          depid as string,",
+				"          country as string",
+				"     ),",
+				"     order: 0,",
+				"     allowSchemaDrift: true) ~> input1",
+				"input1 aggregate(groupBy(ID,",
+				"          {Customer name},",
+				"          Title,",
+				"          depid,",
+				"          country),",
+				"     countid = count()) ~> aggregate1",
+				"aggregate1 output() ~> output1"
+			]
+		}
+	}
+}
