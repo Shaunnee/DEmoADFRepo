@@ -1,0 +1,14 @@
+{
+	"name": "StrFunction",
+	"properties": {
+		"type": "UDFLibrary",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"chkCountry(string) as integer = iif(i1=='uk',1, iif(i1=='india',0,-01))"
+			]
+		}
+	}
+}
