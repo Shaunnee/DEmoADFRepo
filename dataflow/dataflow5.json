@@ -59,7 +59,8 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
-				"          ID",
+				"          ID,",
+				"          name",
 				"     )) ~> sink1"
 			]
 		}
