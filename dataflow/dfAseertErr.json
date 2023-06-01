@@ -26,6 +26,12 @@
 				},
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "goodRrows"
+				},
+				{
+					"name": "badRows"
 				}
 			],
 			"scriptLines": [
@@ -51,7 +57,10 @@
 				", false, 'assertDOJ', null, 'check date doj is valid date'),",
 				"     expectUnique(source1@ID, false, 'assertEmpID', null, 'expect unoque id'),",
 				"     expectExists(depid == department@Id, false, 'assertDepId')) ~> assert1",
-				"assert1 derive(isErrRow = isError()) ~> derivedColumn1"
+				"assert1 derive(isErrRow = isError(),",
+				"          {no dep id} = hasError('assertDepId')) ~> derivedColumn1",
+				"derivedColumn1 filter(isErrRow ==false()) ~> goodRrows",
+				"derivedColumn1 filter(isErrRow ==true()) ~> badRows"
 			]
 		}
 	}
