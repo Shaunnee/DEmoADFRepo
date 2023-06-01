@@ -28,6 +28,9 @@
 						"referenceName": "flowlet1",
 						"type": "DataFlowReference"
 					}
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -41,7 +44,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 compose(mapColumn(",
+				"derivedColumn1 compose(mapColumn(",
 				"          ID,",
 				"          {Customer name},",
 				"          Title,",
@@ -50,11 +53,19 @@
 				"          name = ID",
 				"     ),",
 				"     composition: 'flowlet1') ~> flowlet1@(output1)",
+				"source1 derive(name = 'a') ~> derivedColumn1",
 				"flowlet1@output1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['outcustdepflwlt,csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          ID,",
+				"          {Customer name},",
+				"          Title,",
+				"          depid,",
+				"          country",
+				"     ),",
 				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
