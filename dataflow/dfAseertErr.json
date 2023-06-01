@@ -32,7 +32,7 @@
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 assert(expectTrue(!isNull(toDate(doj, 'yyyyMMdd'))\r",
 				", false, 'assertDOJ', null, 'check date doj is valid date'),",
-				"     expectUnique(ERROR_FUNCTION(''), false, 'assertEmpID', null, 'expect unoque id')) ~> assert1"
+				"     expectUnique(ID, false, 'assertEmpID', null, 'expect unoque id')) ~> assert1"
 			]
 		}
 	}
