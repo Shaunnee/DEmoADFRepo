@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "assert1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          ID as string,",
@@ -25,7 +29,10 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 assert(expectTrue(!isNull(toDate(doj, 'yyyyMMdd'))\r",
+				", false, 'assertDOJ', null, 'check date doj is valid date'),",
+				"     expectUnique(ERROR_FUNCTION(''), false, 'assertEmpID', null, 'expect unoque id')) ~> assert1"
 			]
 		}
 	}
