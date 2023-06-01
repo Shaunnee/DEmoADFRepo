@@ -10,6 +10,9 @@
 					"name": "aggregate1"
 				},
 				{
+					"name": "select1"
+				},
+				{
 					"name": "input1"
 				},
 				{
@@ -32,7 +35,16 @@
 				"          depid,",
 				"          country),",
 				"     countid = count()) ~> aggregate1",
-				"aggregate1 output() ~> output1"
+				"aggregate1 select(mapColumn(",
+				"          ID,",
+				"          {Customer name},",
+				"          Title,",
+				"          depid,",
+				"          country",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 output() ~> output1"
 			]
 		}
 	}
