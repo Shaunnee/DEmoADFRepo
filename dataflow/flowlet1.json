@@ -52,7 +52,8 @@
 				"          {Customer name},",
 				"          Title,",
 				"          depid,",
-				"          country",
+				"          country,",
+				"          name",
 				"     )) ~> output1"
 			]
 		}
