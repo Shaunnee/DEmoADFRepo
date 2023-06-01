@@ -1,0 +1,67 @@
+{
+	"name": "dataflow5",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DEpt",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "outdataset",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flowlet1",
+					"flowlet": {
+						"referenceName": "flowlet1",
+						"type": "DataFlowReference"
+					}
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Id as string,",
+				"          name as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"derivedColumn1 compose(mapColumn(",
+				"          ID = Id,",
+				"          {Customer name},",
+				"          Title,",
+				"          depid,",
+				"          country,",
+				"          name",
+				"     ),",
+				"     composition: 'flowlet1') ~> flowlet1@(output1)",
+				"source1 derive({Customer name} = 'a',",
+				"          Title = 'a',",
+				"          depid = 'a',",
+				"          country = 'a') ~> derivedColumn1",
+				"flowlet1@output1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          ID",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
