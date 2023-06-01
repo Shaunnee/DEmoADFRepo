@@ -1,0 +1,62 @@
+{
+	"name": "dataflow4",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "datsetCustDep",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "outdataset",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flowlet1",
+					"flowlet": {
+						"referenceName": "flowlet1",
+						"type": "DataFlowReference"
+					}
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as string,",
+				"          {Customer name} as string,",
+				"          Title as string,",
+				"          depid as string,",
+				"          country as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 compose(mapColumn(",
+				"          ID,",
+				"          {Customer name},",
+				"          Title,",
+				"          depid,",
+				"          country,",
+				"          name = ID",
+				"     ),",
+				"     composition: 'flowlet1') ~> flowlet1@(output1)",
+				"flowlet1@output1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['outcustdepflwlt,csv'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}
