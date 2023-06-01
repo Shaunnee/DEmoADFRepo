@@ -7,7 +7,7 @@
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"chkCountry(string) as integer = iif(i1=='uk',1, iif(i1=='india',0,-01))"
+				"chkCountry(string) as integer = iif(i1=='UK',1, iif(i1=='india',0,-01))"
 			]
 		}
 	}
