@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Power Query1",
-				"type": "ExecuteWranglingDataflow",
+				"name": "Copy data1",
+				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -15,30 +15,42 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "powerquery1",
-						"type": "DataFlowReference"
+					"source": {
+						"type": "WebSource"
 					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"queries": [
-						{
-							"queryName": "UserQuery",
-							"dataflowSinks": [
-								{
-									"name": "UserQueryoutCustDep",
-									"dataset": {
-										"referenceName": "outCustDep",
-										"type": "DatasetReference"
-									},
-									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tpartitionFileNames:['pqueryRes.csv'],\n\ttruncate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> UserQueryoutCustDep"
-								}
-							]
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
 						}
-					]
-				}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "WebTable1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": [],
