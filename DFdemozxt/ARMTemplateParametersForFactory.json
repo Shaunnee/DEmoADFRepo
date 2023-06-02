@@ -10,6 +10,9 @@
 		},
 		"Web1_properties_typeProperties_url": {
 			"value": "https://www.careerpower.in/states-and-capitals-of-india.html"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": " https://pokeapi.co/api/v2/pokemon?limit=20&offset={offset}"
 		}
 	}
 }
