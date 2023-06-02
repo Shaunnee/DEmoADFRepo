@@ -11,13 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
 		},
-		"Web1_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://www.careerpower.in/states-and-capitals-of-india.html"
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
 		},
 		"RestService1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": " https://pokeapi.co/api/v2/pokemon?limit=20&offset={offset}"
+		},
+		"Web1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.careerpower.in/states-and-capitals-of-india.html"
 		},
 		"containerUri": {
 			"type": "string",
@@ -49,6 +53,9 @@
 					"AzureBlobStorage1_connectionString": {
 						"value": "[parameters('AzureBlobStorage1_connectionString')]"
 					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
 					"RestService1_properties_typeProperties_url": {
 						"value": "[parameters('RestService1_properties_typeProperties_url')]"
 					},
@@ -58,6 +65,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "DFdemozxt_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DFdemozxt_ArmTemplate_0')]"
+			]
 		}
 	]
 }
