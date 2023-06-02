@@ -145,7 +145,20 @@
 						]
 					}
 				],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "pipelineReturnValue",
+					"value": [
+						{
+							"key": "pipelinename",
+							"value": {
+								"type": "String",
+								"content": "copypipeline"
+							}
+						}
+					],
+					"setSystemVariable": true
+				}
 			}
 		],
 		"annotations": []
