@@ -39,6 +39,10 @@
 			{
 				"name": "country",
 				"type": "String"
+			},
+			{
+				"name": "datee",
+				"type": "String"
 			}
 		]
 	},
