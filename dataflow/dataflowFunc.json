@@ -12,10 +12,24 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "outdataset",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				}
+			],
+			"udfLibraries": [
+				{
+					"referenceName": "StrFunction",
+					"type": "DataFlowReference"
 				}
 			],
 			"scriptLines": [
@@ -29,7 +43,19 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 derive(country = iif(country=='uk',1, iif(country=='india',0,-01))) ~> derivedColumn1"
+				"source1 derive(countryf = chkCountry(country)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          ID,",
+				"          {Customer name},",
+				"          Title,",
+				"          depid,",
+				"          country,",
+				"          countryf",
+				"     )) ~> sink1"
 			]
 		}
 	}
