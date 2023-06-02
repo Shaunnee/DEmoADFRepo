@@ -152,8 +152,15 @@
 						{
 							"key": "pipelinename",
 							"value": {
-								"type": "String",
-								"content": "copypipeline"
+								"type": "Expression",
+								"content": "@pipeline().Pipeline"
+							}
+						},
+						{
+							"key": "runid",
+							"value": {
+								"type": "Expression",
+								"content": "@pipeline().RunId"
 							}
 						}
 					],
